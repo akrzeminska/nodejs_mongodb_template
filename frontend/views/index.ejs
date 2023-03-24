@@ -1,0 +1,57 @@
+<!-- 
+Plik definiuje strukturę i zawartość strony HTML z wykorzystaniem języka szablonów EJS.
+W body: definiowane są trzy formularze: CREATE, UPDATE i DELETE, które wysyłają zapytania do serwera, aby dodawać, aktualizować i usuwać postacie z bazy danych.
+W sekcji READ wykorzystuje się szablon EJS do wyświetlenia tytułu strony oraz listy postaci. 
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./../assets/css/index.css">
+</head>
+<body>
+
+    <h2>CREATE</h2>
+    <form action="/" method="post">
+        <input type="text" name="name" id="name">
+        <input type="number" name="age" id="age">
+        <input type="text" name="rank" id="rank">
+        <button type="submit">Wyślij dane</button>
+    </form>
+
+    <h2>READ</h2>
+    <h1> <%= title %></h1>
+    <ul>
+        <% for(var i=0; i<find.length;i++) { %>
+            <li> <%= find[i].name %> <%= find[i].rank %> </li>
+        <% } %>
+    </ul>
+
+    <h2>READ</h2>
+    <button id="btn">Pobierz dane</button>
+
+
+    <h2>UPDATE</h2>
+    <form action="/update" method="post">
+        <button type="submit">Uaktualnij</button>
+    </form>
+
+    <h2>DELETE</h2>
+    <form action="/deleteChoosen" method="POST">
+        <select id="" name="ktoryUsunac">
+            <option value="0">1</option>
+            <option value="1">2</option>
+            <option value="2">3</option>
+            <option value="3">4</option>
+        </select>
+        <button id="deleteChoosen">Usun wybranego</button>
+    </form>
+
+    <script src="./../js/index.js"></script>
+</body>
+</html>
